@@ -1,0 +1,83 @@
+{% extends "global_base.html" %}
+
+{% block title %}Add{% endblock %}
+
+{% block nav %}
+<nav>
+    <p>
+        <a href="{% url 'books:index' %}">home</a>
+        &nbsp;|&nbsp;
+        <a href="{% url 'books:overview' %}">overview</a>
+    </p>
+</nav>
+{% endblock %}
+
+{% block heading %}Add{% endblock %}
+
+{% block page %}
+    <!-- Details from the publication -->
+
+    <form method="post">
+        {% csrf_token %}
+
+        <table>
+            <tr>
+                <td><label>Title&nbsp;&nbsp;</label></td>
+                <td>
+                    <input type="text" name="publication_title" value="{{ publication_title }}">
+                    <p class="has_warning">{{ error_publication_title }}</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Author&nbsp;&nbsp;</label></td>
+                <td>
+                    <input type="text" name="publication_author" value="{{ publication_author }}">
+                    <p class="has_warning">{{ error_publication_author }}</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Pub date&nbsp;&nbsp;</label></td>
+                <td>
+                    <input type="text" name="publication_date" value="{{ publication_date }}">
+                    <p class="has_warning">{{ error_publication_date }}</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Category&nbsp;&nbsp;</label></td>
+                <td>
+                    <select name="publication_category">
+                    {% for category in categories %}
+                        {% if  category == chosen_category %}
+                        <option value="{{ category }}" selected>{{ category }}</option>
+                        {% else %}
+                        <option value="{{ category }}">{{ category }}</option>
+                        {% endif %}
+                    {% endfor%}
+                    </select>
+                </td>
+            </tr>
+<!--
+            <tr>
+                <td><label>Image&nbsp;&nbsp;</label></td>
+                <td>
+                    <input type="file" name="publication_upload" value="browse" accept="image/*">
+                    <p class="has_warning">{{ error_image_upload }}</p>
+                </td>
+            </tr>
+ -->
+        </table>
+
+        <div>
+            <br>
+            <!-- add -->
+            <input class="btn btn-success" type="submit" value="add publication" />
+            <!-- cancel -->
+            <a href="{% url 'books:overview' %}">
+            <input id="pub-cancel" class="btn btn-default" type="button" value="cancel" /></a><br>
+        </div>
+    </form>
+{% endblock %}
+

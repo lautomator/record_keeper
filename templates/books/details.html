@@ -1,0 +1,18 @@
+{% extends "global_base.html" %}
+
+{% block title %}Details{% endblock %}
+
+{% block heading %}Publication Details{% endblock %}
+
+{% block page %}
+    <!-- Details from the publication -->
+    <ul>
+        <li>Title:<strong> {{ pub_details.title }}</strong></li>
+        <li>Author:<strong> {{ pub_details.author }}</strong></li>
+        <li>Publication Date: {{ pub_details.pub_date }}</li>
+        <li>Category: {{ pub_details.category }}</li>
+    </ul>
+    {% if authenticated %}
+    <a class="btn btn-primary" href="{% url 'books:edit' pub_details.id %}"><span class="glyphicon glyphicon-pencil"></span> edit</a>
+    {% endif %}
+{% endblock %}

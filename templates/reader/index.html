@@ -1,0 +1,31 @@
+{% extends "global_base.html" %}
+
+{% load humanize %}
+
+{% block heading %}Reader{% endblock %}
+{% block subheading %}Recent Entries{% endblock%}
+
+{% block page %}
+
+{% if recent_entries %}
+    <!-- Recent Reader Entries -->
+    {% for entry in recent_entries %}
+
+    <p><span class="glyphicon glyphicon-time"></span> Posted: {{ entry.reader_date|naturalday}} by {{ entry.reader_author }}<br>
+
+    <span class="lead"><a href="{% url 'reader:details' entry.id %}" >{{ entry.reader_title }}</a></span></p>
+
+    <p>{{ entry.reader_entry }}</p>
+
+    <hr>
+
+    {% endfor %}
+
+    {% else %}
+        <p>There are no entries.</p>
+        {% if authenticated %}
+            <p><a href="{% url 'reader:add' %}">add an entry</a></p>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

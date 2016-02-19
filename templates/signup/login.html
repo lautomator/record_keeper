@@ -1,0 +1,28 @@
+{% extends "global_base.html" %}
+
+{% block heading %}Login{% endblock %}
+{% block subheading %}{% endblock%}
+
+{% block page %}
+
+    <!-- the login form -->
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="input-group">
+            <p>
+                <label>Username&nbsp;&nbsp;</label>
+                <input type="text" class="form-control" name="username" value="{{ username }}">
+            </p>
+            <p>
+                <label>Password&nbsp;&nbsp;</label>
+                <input type="password" class="form-control" name="password" value="{{ password }}">
+            </p>
+
+            <p class="has_warning">{{ has_warning }}</p>
+
+            <p><input class="btn btn-primary" type="submit" value="submit"></p>
+
+        </div>
+    </form><!-- login form ends -->
+{% endblock %}

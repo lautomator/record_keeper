@@ -1,0 +1,27 @@
+{% extends "global_base.html" %}
+
+{% load humanize %}
+
+{% block heading %}Reader{% endblock %}
+{% block subheading %}Overview{% endblock%}
+
+{% block page %}
+    <!-- All of the reader entries -->
+    {% if all_items %}
+        <!-- Render all of the titles from the table -->
+        {% for item in all_items %}
+        <p><span class="glyphicon glyphicon-time"></span> {{ item.reader_date|naturalday }} | {{ item.reader_author }}
+
+        <p><a href="{% url 'reader:details' item.id %}">{{ item.reader_title }}</a><br>
+        {{ item.reader_entry }}</p>
+
+        <hr>
+
+        {% endfor %}
+    {% else %}
+        <p>There are no entries.</p>
+        {% if authenticated %}
+            <p><a href="{% url 'reader:add' %}">add an entry</a></p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

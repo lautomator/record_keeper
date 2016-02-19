@@ -1,0 +1,30 @@
+{% extends "global_base.html" %}
+
+{% block title %}Delete{% endblock %}
+
+{% block nav %}
+<nav>
+    <p>
+        <a href="{% url 'books:index' %}">home</a>
+        &nbsp;|&nbsp;
+        <a href="{% url 'books:overview' %}">overview</a>
+    </p>
+</nav>
+{% endblock %}
+
+{% block heading %}Delete{% endblock %}
+
+{% block page %}
+    <!-- Details from the publication -->
+    <h2>{{ pub.title }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete <strong>{{ pub.title }}</strong>?</p>
+        <!-- confirm -->
+        <input class="btn btn-danger" type="submit" value="confirm" />
+        <!-- cancel -->
+        <a href="{% url 'books:overview' %}">
+        <input class="btn btn-default" type="button" value="cancel" /></a>
+    </form>
+{% endblock %}

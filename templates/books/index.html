@@ -1,0 +1,56 @@
+{% extends "global_base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block heading %}Publications{% endblock %}
+{% block subheading %}Recent Titles / Recent Authors{% endblock%}
+
+{% block page %}
+
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+
+                <hr>
+                {% if recent_entries %}
+                    <ul>
+                    {% for pub in recent_entries %}
+                        <!--  books:title (books is the namespace:title is url)
+                                See urls.py for project (not app) -->
+                        <li><a href="{% url 'books:details' pub.id %}">
+                            {{ pub.title }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No titles are available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <hr>
+
+                {% if recent_entries %}
+                    <ul>
+                    {% for writer in recent_entries %}
+                        <!-- books:author (books is the namespace:author is url) -->
+                        <li><a href="{% url 'books:details' writer.id %}">
+                            {{ writer.author }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No authors are available.</p>
+                    {% if authenticated %}
+                        <p><a href="{% url 'books:add' %}">add a publication</a></p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

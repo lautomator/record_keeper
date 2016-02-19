@@ -1,0 +1,50 @@
+{% extends "global_base.html" %}
+
+{% block heading %}Signup{% endblock %}
+{% block subheading %}{% endblock%}
+
+{% block page %}
+
+    <p>Existing users <a href="{% url 'signup:login' %}">login</a>.</p>
+
+    <!-- the signup form -->
+    <form method="post">
+        {% csrf_token %}
+        <div class="input-group">
+            <table>
+                <tr>
+                    <td><label>Username&nbsp;&nbsp;</label></td>
+                    <td>
+                        <input class="form-control" type="text" name="username" value="{{ username }}">
+                        <p class="has_warning">{{ err_name }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Password&nbsp;&nbsp;</label></td>
+                    <td>
+                        <input class="form-control" type="password" name="password" value="{{ password }}">
+                        <p class="has_warning">{{ err_password }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Verify Password&nbsp;&nbsp;</label></td>
+                    <td>
+                        <input class="form-control" type="password" name="verify" value="{{ verify }}">
+                        <p class="has_warning">{{ err_verify }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Email (optional)&nbsp;&nbsp;</label></td>
+                    <td>
+                        <input class="form-control" type="text" name="email" value="{{ email }}">
+                        <p class="has_warning">{{ err_email }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input class="btn btn-primary" type="submit" value="submit">
+                </tr>
+            </table>
+        </div>
+    </form><!-- signup form ends -->
+
+{% endblock %}

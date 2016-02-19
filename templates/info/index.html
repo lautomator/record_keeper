@@ -1,0 +1,15 @@
+{% extends "global_base.html" %}
+
+{% block heading %}About{% endblock %}
+{% block subheading %}{% endblock%}
+
+{% block page %}
+
+    <h4>Keep track of things and write journal entries with the following:</h4>
+    <p> <span class="lead"><a href="{% url 'books:index' %}">Publications</a></span><br>
+    Add, delete, and modify publication entries, such as books.</p>
+
+    <p> <span class="lead"><a href="{% url 'reader:index' %}">Reader</a></span><br>
+    Add, delete, and modify journal entries.</p>
+
+{% endblock %}
