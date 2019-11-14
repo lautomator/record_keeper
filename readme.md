@@ -1,4 +1,5 @@
-##Record Keeper
+Record Keeper
+=============
 
 Here are a few Django-powered apps that track inventory and keep notes.
 They are:
@@ -7,16 +8,20 @@ They are:
 * Reader: blog
 * About (a static page)
 
-###Local Setup
+Local Setup
+===========
+
 To get this going:
 * Install virtualenv and install the requirements:
 
-`virtualenv env`
-`source env/bin/activate`
-`pip install -r requirements.txt`
+```
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+```
 
 * Run the database migrations
-python manage.py migrate
+`python manage.py migrate`
 
 * Create a super user
 `python manage.py createsuperuser`
@@ -24,6 +29,7 @@ python manage.py migrate
 * Run the Django server:
 `python manage.py runserver`
 
-###Troubleshooting
+Troubleshooting
+===============
 * Be sure all of the virtualenv requirements are set.
 * Verify the virtual environment is running
