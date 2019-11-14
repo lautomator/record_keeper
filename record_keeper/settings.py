@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
-import record_keeper_conf
+# import record_keeper_conf
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -21,10 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # set the development cycle state (dev_*, staging_*, prod_*)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = record_keeper_conf.dev_rk['sk']
+SECRET_KEY = 'dev_only'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = record_keeper_conf.dev_rk['debug']
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -81,12 +81,8 @@ WSGI_APPLICATION = 'record_keeper.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': record_keeper_conf.dev_rk['db_name'],
-        'USER': record_keeper_conf.dev_rk['db_user'],
-        'PASSWORD': record_keeper_conf.dev_rk['db_pw'],
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
