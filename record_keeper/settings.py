@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # set the development cycle state (dev_*, staging_*, prod_*)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dev_only'
+SECRET_KEY = 'BXaDu5APGnqtTxJKxdJLN3fTKjsrMpsM' #DEV ONLY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
