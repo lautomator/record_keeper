@@ -1,5 +1,5 @@
 certifi==2019.3.9
-Django==3.0.7
+Django==3.0.14
 pipenv==2018.11.26
 virtualenv==16.4.3
 virtualenv-clone==0.5.1
